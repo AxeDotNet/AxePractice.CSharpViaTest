@@ -30,11 +30,9 @@ namespace CSharpViaTest.Collections
 
         class SkippedEnumerator<T> : IEnumerator<T>
         {
-            readonly ICollection<T> collection;
-
-            public SkippedEnumerator(ICollection<T> collection)
+            public SkippedEnumerator(IEnumerable<T> collection)
             {
-                this.collection = collection;
+                throw new NotImplementedException();
             }
 
             public bool MoveNext()

@@ -28,6 +28,8 @@ namespace CSharpViaTest.Collections
             }
         }
 
+        #region Please modifies the code to pass the test
+
         class SkippedEnumerator<T> : IEnumerator<T>
         {
             public SkippedEnumerator(IEnumerable<T> collection)
@@ -54,6 +56,8 @@ namespace CSharpViaTest.Collections
                 throw new NotImplementedException();
             }
         }
+
+        #endregion
 
         [Fact]
         public void should_visit_elements_in_reversed_order()

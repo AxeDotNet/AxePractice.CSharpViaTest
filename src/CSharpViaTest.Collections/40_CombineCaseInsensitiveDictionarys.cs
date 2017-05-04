@@ -9,9 +9,20 @@ namespace CSharpViaTest.Collections
     {
         #region Please modifies the code to pass the test
 
-        static IDictionary<string, ISet<T>> Combine<T>(IDictionary<string, ISet<T>> first, IDictionary<string, ISet<T>> second)
+        static IDictionary<string, ISet<T>> Combine<T>(
+            IEnumerable<KeyValuePair<string, ISet<T>>> first, 
+            IEnumerable<KeyValuePair<string, ISet<T>>> second)
         {
-            throw new NotImplementedException();
+            return first
+                .Concat(second)
+                .Aggregate(
+                    new Dictionary<string, ISet<T>>(StringComparer.OrdinalIgnoreCase),
+                    (aggr, pair) =>
+                    {
+                        if (aggr.ContainsKey(pair.Key)) { aggr[pair.Key].UnionWith(pair.Value); }
+                        else { aggr.Add(pair.Key, pair.Value); }
+                        return aggr;
+                    });
         }
 
         #endregion

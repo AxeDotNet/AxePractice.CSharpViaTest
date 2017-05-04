@@ -22,7 +22,22 @@ namespace CSharpViaTest.Collections
 
         static IEnumerable<int> TakeUntilError(IEnumerable<int> sequence)
         {
-            throw new NotImplementedException();
+            using (IEnumerator<int> iterator = sequence.GetEnumerator())
+            {
+                while (true)
+                {
+                    try
+                    {
+                        if (!iterator.MoveNext()) { yield break; }
+                    }
+                    catch (Exception)
+                    {
+                        yield break;
+                    }
+
+                    yield return iterator.Current;
+                }
+            }
         }
 
         #endregion
@@ -31,7 +46,7 @@ namespace CSharpViaTest.Collections
         public void should_get_sequence_until_an_exception_is_thrown()
         {
             IEnumerable<int> sequence = TakeUntilError(GetSequenceOfData());
-            Assert.Equal(Enumerable.Range(0, indexThatWillThrow + 1), sequence);
+            Assert.Equal(Enumerable.Range(0, indexThatWillThrow), sequence);
         }
     }
 }

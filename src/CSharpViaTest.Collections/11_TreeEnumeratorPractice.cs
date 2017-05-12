@@ -50,28 +50,49 @@ namespace CSharpViaTest.Collections
 
         class TreeNodeEnumerator : IEnumerator<TreeNode>
         {
+            readonly TreeNode root;
+            readonly Stack<TreeNode> unvisitedBranch = new Stack<TreeNode>();
+
+            TreeNode current;
+
             public TreeNodeEnumerator(TreeNode root)
             {
-                throw new NotImplementedException();
+                this.root = root;
+                current = CreateBeginNode(root);
+            }
+
+            static TreeNode CreateBeginNode(TreeNode root)
+            {
+                return new TreeNode(null, new []{root});
             }
 
             public bool MoveNext()
             {
-                throw new NotImplementedException();
+                foreach (TreeNode child in current.Children)
+                {
+                    unvisitedBranch.Push(child);
+                }
+
+                if (unvisitedBranch.Count <= 0)
+                {
+                    return false;
+                }
+
+                current = unvisitedBranch.Pop();
+                return true;
             }
 
             public void Reset()
             {
-                throw new NotImplementedException();
+                current = CreateBeginNode(root);
             }
 
-            public TreeNode Current { get; }
+            public TreeNode Current => current;
 
             object IEnumerator.Current => Current;
 
             public void Dispose()
             {
-                throw new NotImplementedException();
             }
         }
 

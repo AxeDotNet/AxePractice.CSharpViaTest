@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
 namespace CSharpViaTest.Collections
 {
+    [SuperEasy]
     public class CombineCaseInsensitiveDictionarys
     {
         #region Please modifies the code to pass the test

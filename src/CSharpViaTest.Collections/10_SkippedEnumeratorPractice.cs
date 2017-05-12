@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
 namespace CSharpViaTest.Collections
 {
+    [SuperEasy]
     public class SkippedEnumeratorPractice
     {
         class SkippedEnumerable<T> : IEnumerable<T>
@@ -29,6 +31,11 @@ namespace CSharpViaTest.Collections
         }
 
         #region Please modifies the code to pass the test
+
+        // Attention
+        // 
+        // * No LINQ method is allowed to use.
+        // * The memory efficiency should be O(1)
 
         class SkippedEnumerator<T> : IEnumerator<T>
         {

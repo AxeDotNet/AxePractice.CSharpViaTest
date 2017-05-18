@@ -22,7 +22,9 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
 
         static int GetMaxNumber(IEnumerable<IEnumerable<int>> collections)
         {
-            throw new NotImplementedException();
+            return collections
+                .Select(c => c.Max(i => i))
+                .Max(i => i);
         }
 
         #endregion

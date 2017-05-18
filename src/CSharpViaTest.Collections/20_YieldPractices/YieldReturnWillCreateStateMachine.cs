@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+using System;
 using System.Text;
+using System.Collections.Generic;
+using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
-namespace CSharpViaTest.Collections
+namespace CSharpViaTest.Collections._20_YieldPractices
 {
+    [SuperEasy]
     public class YieldReturnWillCreateStateMachine
     {
         #region Please modifies the code to pass the test 

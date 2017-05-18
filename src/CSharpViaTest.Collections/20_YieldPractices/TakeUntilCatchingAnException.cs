@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
-namespace CSharpViaTest.Collections
+namespace CSharpViaTest.Collections._20_YieldPractices
 {
+    [Medium]
     public class TakeUntilCatchingAnException
     {
         readonly int indexThatWillThrow = new Random().Next(2, 10);

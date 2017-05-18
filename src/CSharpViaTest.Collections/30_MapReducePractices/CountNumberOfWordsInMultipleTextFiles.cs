@@ -13,6 +13,8 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
     {
         #region Please modifies the code to pass the test
 
+        // You can add additional functions for readability and performance considerations.
+
         static int CountNumberOfWords(IEnumerable<Stream> streams)
         {
             throw new NotImplementedException();

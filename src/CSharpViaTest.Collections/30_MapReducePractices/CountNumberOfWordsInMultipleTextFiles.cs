@@ -8,7 +8,7 @@ using Xunit;
 
 namespace CSharpViaTest.Collections._30_MapReducePractices
 {
-    [SuperEasy]
+    [Medium]
     public class CountNumberOfWordsInMultipleTextFiles
     {
         #region Please modifies the code to pass the test

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
-namespace CSharpViaTest.Collections
+namespace CSharpViaTest.Collections._20_YieldPractices
 {
     [SuperEasy]
     public class YieldReturnWillCreateStateMachine

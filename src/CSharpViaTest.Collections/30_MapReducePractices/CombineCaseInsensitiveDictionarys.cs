@@ -4,9 +4,9 @@ using System.Linq;
 using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
-namespace CSharpViaTest.Collections
+namespace CSharpViaTest.Collections._30_MapReducePractices
 {
-    [SuperEasy]
+    [Medium]
     public class CombineCaseInsensitiveDictionarys
     {
         #region Please modifies the code to pass the test

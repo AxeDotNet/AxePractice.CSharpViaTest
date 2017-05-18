@@ -5,7 +5,7 @@ using System.Linq;
 using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
-namespace CSharpViaTest.Collections
+namespace CSharpViaTest.Collections._10_EnumerablePractices
 {
     [SuperEasy]
     public class SkippedEnumeratorPractice

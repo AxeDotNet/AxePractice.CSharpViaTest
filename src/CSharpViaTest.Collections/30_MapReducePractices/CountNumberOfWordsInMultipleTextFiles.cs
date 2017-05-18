@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CSharpViaTest.Collections.Annotations;
 using CSharpViaTest.Collections.Helpers;
 using Xunit;
@@ -15,7 +16,24 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
 
         static int CountNumberOfWords(IEnumerable<Stream> streams)
         {
-            throw new NotImplementedException();
+            return streams
+                .Select(stream => new StreamReader(stream, Encoding.UTF8, false, 1024, true))
+                .SelectMany(EnumerateLines)
+                .Sum(CountWordsInLine);
+        }
+
+        static int CountWordsInLine(string line)
+        {
+            return line.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries).Length;
+        }
+
+        static IEnumerable<string> EnumerateLines(TextReader reader)
+        {
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                yield return line;
+            }
         }
 
         #endregion

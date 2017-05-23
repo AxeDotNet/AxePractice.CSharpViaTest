@@ -33,7 +33,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         public void should_get_sequence_until_an_exception_is_thrown()
         {
             IEnumerable<int> sequence = TakeUntilError(GetSequenceOfData());
-            Assert.Equal(Enumerable.Range(0, indexThatWillThrow + 1), sequence);
+            Assert.Equal(Enumerable.Range(0, indexThatWillThrow), sequence);
         }
 
         [Fact]

@@ -20,7 +20,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
             }
         }
 
-        #region Please modifies the code to pass the test 
+        #region Please modifies the code to pass the test
 
         static IEnumerable<int> TakeUntilError(IEnumerable<int> sequence)
         {

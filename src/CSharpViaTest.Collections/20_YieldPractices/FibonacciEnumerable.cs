@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CSharpViaTest.Collections.Annotations;
 using Xunit;
@@ -11,6 +11,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
     {
         #region Please modifies the code to pass the test
 
+        [SuppressMessage("ReSharper", "IteratorNeverReturns", Justification = "It is indeed an infinit sequence")]
         static IEnumerable<long> GetFibonacciIntegers()
         {
             for (long current = 1, next = 1;;) {

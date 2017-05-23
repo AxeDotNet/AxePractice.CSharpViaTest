@@ -71,8 +71,8 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
                 ProductNames = productNames;
             }
 
-            public string CategoryName { get; }
-            public IList<string> ProductNames { get; }
+            string CategoryName { get; }
+            IList<string> ProductNames { get; }
 
             public override bool Equals(object obj)
             {

@@ -30,7 +30,9 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         [Fact]
         public void should_not_get_concrete_collection()
         {
-            
+            IEnumerable<long> fib = GetFibonacciIntegers();
+
+            Assert.False(fib is ICollection<long>);
         }
     }
 }

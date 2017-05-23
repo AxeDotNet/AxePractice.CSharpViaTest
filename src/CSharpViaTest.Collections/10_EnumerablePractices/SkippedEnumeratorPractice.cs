@@ -67,7 +67,7 @@ namespace CSharpViaTest.Collections._10_EnumerablePractices
         #endregion
 
         [Fact]
-        public void should_visit_elements_in_reversed_order()
+        public void should_visit_elements_in_skipped_manner()
         {
             int[] sequence = {1, 2, 3, 4, 5, 6};
             int[] resolved = new SkippedEnumerable<int>(sequence).ToArray();

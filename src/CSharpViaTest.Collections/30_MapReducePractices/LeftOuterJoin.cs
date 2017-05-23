@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
 namespace CSharpViaTest.Collections._30_MapReducePractices
 {
+    [Medium]
     public class LeftOuterJoin
     {
         class Category
@@ -118,7 +120,12 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
 
         static IEnumerable<CategorisedProduct> GroupProductsByCategory(IEnumerable<Product> products, IEnumerable<Category> categories)
         {
-            throw new NotImplementedException();
+            return from c in categories
+                join p in products on c.Id equals p.CategoryId into ps
+                select new CategorisedProduct(
+                    c.Name,
+                    ps.OrderBy(p => p.Id).Select(p => p.Name).ToArray()
+                );
         }
 
         #endregion

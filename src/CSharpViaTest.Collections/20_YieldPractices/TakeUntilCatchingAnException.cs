@@ -50,5 +50,13 @@ namespace CSharpViaTest.Collections._20_YieldPractices
             IEnumerable<int> sequence = TakeUntilError(GetSequenceOfData());
             Assert.Equal(Enumerable.Range(0, indexThatWillThrow), sequence);
         }
+
+        [Fact]
+        public void should_get_sequence_given_normal_collection()
+        {
+            var sequence = new[] { 1, 2, 3 };
+            IEnumerable<int> result = TakeUntilError(sequence);
+            Assert.Equal(sequence, result);
+        }
     }
 }

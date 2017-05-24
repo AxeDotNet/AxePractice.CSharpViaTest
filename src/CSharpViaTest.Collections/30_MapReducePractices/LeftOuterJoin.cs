@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
 namespace CSharpViaTest.Collections._30_MapReducePractices
 {
+    [Medium]
     public class LeftOuterJoin
     {
         class Category

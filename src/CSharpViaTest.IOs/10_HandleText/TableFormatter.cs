@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using Xunit;
 
 namespace CSharpViaTest.IOs._10_HandleText
@@ -27,7 +28,22 @@ namespace CSharpViaTest.IOs._10_HandleText
             CellFormatRule[] rules,
             IFormatProvider formatProvider)
         {
-            throw new NotImplementedException();
+            return data.Select(row =>
+                row.Select(
+                        (cell, index) =>
+                        {
+                            if (index >= rules.Length) throw new ArgumentException("Data does not match with rules");
+                            CellFormatRule rule = rules[index];
+                            object actualCellData = cell ?? "";
+                            string cellString = actualCellData is IFormattable
+                                ? ((IFormattable) actualCellData).ToString(null, formatProvider)
+                                : actualCellData.ToString();
+                            Func<int, string> padding = rule.RightAligned
+                                ? (Func<int, string>) cellString.PadLeft
+                                : cellString.PadRight;
+                            return padding(rule.CellCharacterLength);
+                        })
+                    .Aggregate(new StringBuilder(), (result, item) => result.Append(item), result => result.ToString()));
         }
 
         #endregion

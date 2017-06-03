@@ -29,7 +29,7 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
         #endregion
 
         [Fact]
-        public void should_get_top_10_numbers_in_collections()
+        public void should_get_max_numbers_in_collections()
         {
             IEnumerable<IEnumerable<int>> streams = CreateStreamsContainingMaxNumber(100);
             int maxNumber = GetMaxNumber(streams);

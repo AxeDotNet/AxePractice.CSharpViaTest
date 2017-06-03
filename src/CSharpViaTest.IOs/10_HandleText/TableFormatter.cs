@@ -71,10 +71,10 @@ namespace CSharpViaTest.IOs._10_HandleText
             Assert.Equal(
                 new[]
                 {
-                    "Name                Company                 Id",
-                    "Edogawa Conan       Tokyo                  C01",
-                    "Furugawa Nagisa     Kyoto Animation        C02",
-                    "Kirigaya Katsuto    A1 Pictures            C03"
+                    "Name                Company                Id",
+                    "Edogawa Conan       Tokyo                 C01",
+                    "Furugawa Nagisa     Kyoto Animation       C02",
+                    "Kirigaya Katsuto    A1 Pictures           C03"
                 },
                 table);
         }

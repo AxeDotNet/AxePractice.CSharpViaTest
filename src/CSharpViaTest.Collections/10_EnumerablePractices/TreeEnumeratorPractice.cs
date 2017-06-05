@@ -2,12 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
 namespace CSharpViaTest.Collections._10_EnumerablePractices
 {
-    [SuperHard]
+    /* 
+     * Description
+     * ===========
+     * 
+     * This test is a slightly difficult practice to manually create a IEnumerator<T>
+     * To flatten a tree. In this practice you have to reserve some state in order
+     * to complete the tree transversal. Please complete "SkippedEnumeratorPractice"
+     * first.
+     * 
+     * Difficulty: Super Hard
+     * 
+     * Requirement
+     * ===========
+     * 
+     * - No LINQ method is allowed to use in this test.
+     */
     public class TreeEnumeratorPractice
     {
         class TreeNode
@@ -43,10 +57,6 @@ namespace CSharpViaTest.Collections._10_EnumerablePractices
         }
 
         #region Please modifies the code to pass the test
-
-        // Attention
-        // 
-        // * No LINQ method is allowed to use.
 
         class TreeNodeEnumerator : IEnumerator<TreeNode>
         {

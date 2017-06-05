@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
 namespace CSharpViaTest.Collections._20_YieldPractices
 {
-    [Medium]
+    /* 
+     * Description
+     * ===========
+     * 
+     * This test is an intresting one to demonstrate the deferred natrure of IEnumerable<T>.
+     * 
+     * Difficulty: Medium
+     */
     public class TakeUntilCatchingAnException
     {
         readonly int indexThatWillThrow = new Random().Next(2, 10);

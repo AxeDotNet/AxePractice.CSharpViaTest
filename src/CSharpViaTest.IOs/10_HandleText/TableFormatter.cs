@@ -6,6 +6,14 @@ using Xunit;
 
 namespace CSharpViaTest.IOs._10_HandleText
 {
+    /* 
+     * Description
+     * ===========
+     * 
+     * This test will practice how to padding string and format object using IFormatProvider.
+     * 
+     * Difficulty: Medium
+     */
     public class TableFormatter
     {
         struct CellFormatRule

@@ -1,12 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CSharpViaTest.Collections.Annotations;
 using Xunit;
 
 namespace CSharpViaTest.Collections._30_MapReducePractices
 {
-    [Medium]
+    /* 
+     * Description
+     * ===========
+     * 
+     * This test will implement left outer join logic using LINQ. And you should complete
+     * the test in just one statement.
+     * 
+     * Difficulty: Medium
+     * 
+     * Requirement
+     * ===========
+     * 
+     * - No `for`, `foreach` or other loop keywords are allowed to use.
+     */
     public class LeftOuterJoin
     {
         class Category

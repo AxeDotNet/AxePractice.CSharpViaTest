@@ -2,20 +2,32 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using CSharpViaTest.Collections.Annotations;
 using CSharpViaTest.Collections.Helpers;
 using Xunit;
 
 namespace CSharpViaTest.Collections._30_MapReducePractices
 {
-    [Medium]
+    /* 
+     * Description
+     * ===========
+     * 
+     * This test will try count number of words in multiple files. The files are provided
+     * in a stream manner. Please note that you have to be aware that the file may be
+     * very large.
+     * 
+     * You can create additional method in the practice region to improve readablility.
+     * 
+     * Difficulty: Medium
+     * 
+     * Requirement
+     * ===========
+     * 
+     * - No `for`, `foreach` or other loop keywords are allowed to use.
+     */
     public class CountNumberOfWordsInMultipleTextFiles
     {
         #region Please modifies the code to pass the test
-
-        // You can add additional functions for readability and performance considerations.
-
+        
         static int CountNumberOfWords(IEnumerable<Stream> streams)
         {
             return streams

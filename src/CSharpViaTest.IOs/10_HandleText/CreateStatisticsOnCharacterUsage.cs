@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
+using CSharpViaTest.IOs.Helpers;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace CSharpViaTest.IOs._10_HandleText
 {
@@ -9,12 +13,28 @@ namespace CSharpViaTest.IOs._10_HandleText
      * Description
      * ===========
      * 
-     * This test will show the basic usage of text stream.
+     * This test will show the basic usage of text stream. In this test, you should create
+     * a function `StatCharacterUsage` which accept an UTF-8 encoded text stream. The
+     * function should returns a histogram containing the statistics of English character
+     * usage (case insensitive). All non-English character will be ignored.
      * 
-     * Difficulty: Super Easy
+     * Difficulty: Super Hard
+     * 
+     * Requirement
+     * ===========
+     * 
+     * - The memory efficiency should be O(1).
+     * - This function should handle 128 MB of text within 12 seconds.
      */
     public class CreateStatisticsOnCharacterUsage
     {
+        readonly ITestOutputHelper output;
+
+        public CreateStatisticsOnCharacterUsage(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
         static Stream CreateStringStream(string text)
         {
             var stream = new MemoryStream();
@@ -30,7 +50,7 @@ namespace CSharpViaTest.IOs._10_HandleText
 
         static Dictionary<char, int> StatCharacterUsage(Stream stream)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -65,6 +85,30 @@ namespace CSharpViaTest.IOs._10_HandleText
             Assert.Equal(1, histogram['y']);
             Assert.Equal(1, histogram['d']);
             Assert.Equal(1, histogram['g']);
+        }
+
+        [Fact]
+        public void should_be_able_to_handle_very_large_stream()
+        {
+            const long length = 128 * 1024 * 1024;
+            using (var stream = new Utf8RandomTextStream(length))
+            {
+                var watch = Stopwatch.StartNew();
+                StatCharacterUsage(stream);
+                watch.Stop();
+                output.WriteLine($"Time used to handle {length / 1024 / 1024} MB of text: {watch.Elapsed:g}");
+                Assert.True(watch.Elapsed < TimeSpan.FromSeconds(12), "Oh, too slow!");
+            }
+        }
+
+        [Fact]
+        public void should_not_dispose_input_stream()
+        {
+            using (var stream = new Utf8RandomTextStream(10))
+            {
+                StatCharacterUsage(stream);
+                Assert.False(stream.Disposed);
+            }
         }
     }
 }

@@ -15,6 +15,13 @@ namespace CSharpViaTest.Collections._20_YieldPractices
      * 
      * Difficulty: Super Easy
      * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - We can implicitly implement IEnumerator<T> using `yield` keyword.
+     * - The compiler will turn `yield` keyword into an IEnumerator<T> implementation.
+     * - You can use `yield break` to stop the iteration immediately.
+     * 
      * Requirement
      * ===========
      * 

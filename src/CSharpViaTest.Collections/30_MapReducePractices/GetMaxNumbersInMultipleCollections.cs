@@ -14,6 +14,11 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
      * 
      * Difficulty: Medium
      * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - LINQ Queries: Select/SelectMany, Max
+     * 
      * Requirement
      * ===========
      * 

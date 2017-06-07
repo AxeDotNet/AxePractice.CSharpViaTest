@@ -12,6 +12,13 @@ namespace CSharpViaTest.Collections._20_YieldPractices
      * 
      * Difficulty: Super Easy
      * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - We can implicitly implement IEnumerator<T> using `yield` keyword.
+     * - You can use string constructor or `StringBuilder` to quickly create string with
+     *   repeating characters.
+     * 
      * Requirement
      * ===========
      * 

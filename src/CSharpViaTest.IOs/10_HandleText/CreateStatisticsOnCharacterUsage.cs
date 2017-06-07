@@ -21,6 +21,13 @@ namespace CSharpViaTest.IOs._10_HandleText
      * 
      * Difficulty: Super Hard
      * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - Use `TextReader` to decode text content from binary stream.
+     * - How to handle large stream using restricted memory block.
+     * - Do not take control of object's lifetime if it is not created by yourself.
+     * 
      * Requirement
      * ===========
      * 

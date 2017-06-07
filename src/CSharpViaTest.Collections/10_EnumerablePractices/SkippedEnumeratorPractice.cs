@@ -16,6 +16,14 @@ namespace CSharpViaTest.Collections._10_EnumerablePractices
      * 
      * Difficulty: Super Easy
      * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - An IEnumerator<T> does not necessary load all data into memory. It is just a
+     *   simple iterator for the most of the time.
+     * - GetEnumerator() just returns the IEnumerator<T> without actually iterating
+     *   over the sequence.
+     * 
      * Requirement
      * ===========
      * 

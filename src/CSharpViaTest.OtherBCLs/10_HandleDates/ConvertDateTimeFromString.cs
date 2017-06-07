@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Xunit;
 
 namespace CSharpViaTest.OtherBCLs._10_HandleDates
@@ -46,7 +48,25 @@ namespace CSharpViaTest.OtherBCLs._10_HandleDates
 
         static IEnumerable<DateTime> EnumerateDateTimes(Stream stream)
         {
-            throw new NotImplementedException();
+            using (var reader = new StreamReader(stream, Encoding.UTF8, false, 32 * 1024, true))
+            {
+                string line;
+                var cultureStringPattern = new Regex(@"[a-z]{2,2}-[a-zA-Z]{2,3}");
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split('|');
+                    string dateTimeString = parts[1];
+                    string pattern = parts[0];
+                    if (cultureStringPattern.IsMatch(pattern))
+                    {
+                        yield return DateTime.Parse(dateTimeString, new CultureInfo(pattern), DateTimeStyles.AssumeUniversal);
+                    }
+                    else
+                    {
+                        yield return DateTime.ParseExact(dateTimeString, pattern, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+                    }
+                }
+            }
         }
 
         #endregion

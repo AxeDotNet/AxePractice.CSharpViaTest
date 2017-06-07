@@ -12,12 +12,19 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
      * This test will try combine two hashtables. You can use LINQ method for help but
      * you have to complete the test in just one statement.
      * 
+     * Difficulty: Medium
+     * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - Aggregate
+     * - If you want to modify the default way to evaluate keys in the
+     *   `Dictionary<TKey, TValue>`. Please provide correspond Comparators.
+     * 
      * Requirement
      * ===========
      * 
      * - No `for`, `foreach` or other loop keywords are allowed to use.
-     * 
-     * Difficulty: Medium
      */
     public class CombineCaseInsensitiveDictionarys
     {

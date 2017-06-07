@@ -15,9 +15,16 @@ namespace CSharpViaTest.Collections._30_MapReducePractices
      * in a stream manner. Please note that you have to be aware that the file may be
      * very large.
      * 
-     * You can create additional method in the practice region to improve readablility.
+     * The words in the file streams will be divided by a white space character. You can 
+     * create additional method in the practice region to improve readablility. 
      * 
      * Difficulty: Medium
+     * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - LINQ Query: Sum
+     * - Using sequencial access to evaluate word count.
      * 
      * Requirement
      * ===========

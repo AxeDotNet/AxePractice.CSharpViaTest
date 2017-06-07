@@ -13,6 +13,14 @@ namespace CSharpViaTest.IOs._10_HandleText
      * This test will practice how to padding string and format object using IFormatProvider.
      * 
      * Difficulty: Medium
+     * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - string.PadLeft(), string.PadRight()
+     * - A `IFormatProvider` can be passed to `ToString()` method if the object implements
+     *   `IFormattable` interface. The `CultureInfo` class implements the `IFormatProvider`
+     *   interface.
      */
     public class TableFormatter
     {

@@ -17,6 +17,14 @@ namespace CSharpViaTest.Collections._10_EnumerablePractices
      * 
      * Difficulty: Super Hard
      * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - Although IEnumerator<T> does not load all data into memory, it can be designed
+     *   to hold state in order to complete the iteration job.
+     * - A recurssion can be translated to an iteration with the help of Stack<T> data
+     *   structure.
+     * 
      * Requirement
      * ===========
      * 

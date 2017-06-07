@@ -32,12 +32,16 @@ namespace CSharpViaTest.OtherBCLs._10_HandleDates
      */
     public class ConvertDateTimeFromString
     {
-        static Stream CreateTextStreamWithDateTimes(string[] dateTimeString)
+        static Stream CreateTextStreamWithDateTimes(string[] dateTimeStrings)
         {
             var stream = new MemoryStream();
             using (var writer = new StreamWriter(stream, Encoding.UTF8, 32 * 1024, true))
             {
-                writer.WriteLine(dateTimeString);
+                foreach (string dateTimeString in dateTimeStrings)
+                {
+                    writer.WriteLine(dateTimeString);
+                }
+                writer.Flush();
             }
 
             stream.Seek(0, SeekOrigin.Begin);

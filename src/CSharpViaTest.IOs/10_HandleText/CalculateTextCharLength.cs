@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xunit;
 
 namespace CSharpViaTest.IOs._10_HandleText
@@ -27,7 +26,15 @@ namespace CSharpViaTest.IOs._10_HandleText
 
         static int GetCharacterLength(string text)
         {
-            throw new NotImplementedException();
+            int surrogatePairCount = 0;
+            for (int i = 0; i < text.Length; ++i)
+            {
+                if (!char.IsSurrogatePair(text, i)) { continue; }
+                ++i;
+                ++surrogatePairCount;
+            }
+
+            return text.Length - surrogatePairCount;
         }
 
         #endregion

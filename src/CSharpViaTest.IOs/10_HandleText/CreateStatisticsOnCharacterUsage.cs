@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using CSharpViaTest.IOs.Helpers;
 using Xunit;
@@ -50,7 +51,30 @@ namespace CSharpViaTest.IOs._10_HandleText
 
         static Dictionary<char, int> StatCharacterUsage(Stream stream)
         {
-            throw new NotImplementedException();
+            const int bufferSize = 256 * 1024;
+            using (var reader = new StreamReader(stream, Encoding.UTF8, false, bufferSize, true))
+            {
+                const int histogramSize = 26;
+                const int charBufferSize = 64 * 1024;
+                var histogram = new int[histogramSize];
+                var charBuffer = new char[charBufferSize];
+                int charRead;
+                while ((charRead = reader.ReadBlock(charBuffer, 0, charBufferSize)) != 0)
+                {
+                    for (int i = 0; i < charRead; ++i)
+                    {
+                        char lowered = char.ToLowerInvariant(charBuffer[i]);
+                        if (lowered >= 'a' && lowered <= 'z')
+                        {
+                            ++histogram[lowered - 'a'];
+                        }
+                    }
+                }
+                
+                return histogram
+                    .Select((freq, index) => new KeyValuePair<char, int>((char) ('a' + index), freq))
+                    .ToDictionary(p => p.Key, p => p.Value);
+            }
         }
 
         #endregion

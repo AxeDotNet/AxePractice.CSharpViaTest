@@ -19,8 +19,8 @@ namespace CSharpViaTest.IOs._10_HandleText
             new[]
             {
                 new object[]{"", 0},
-                new object[]{"1", 1},
-                new object[]{char.ConvertFromUtf32(0x2A601), 1}
+                new object[]{"12345", 5},
+                new object[]{char.ConvertFromUtf32(0x2A601) + "1234", 5}
             };
 
         #region Please modifies the code to pass the test

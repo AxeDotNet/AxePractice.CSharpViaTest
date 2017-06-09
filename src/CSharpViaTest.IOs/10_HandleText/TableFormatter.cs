@@ -76,21 +76,21 @@ namespace CSharpViaTest.IOs._10_HandleText
 
             IEnumerable<IEnumerable<object>> data = new[]
             {
-                new[] {"Name", "Company", "Id"},
-                new[] {"Edogawa Conan", "Tokyo", "C01"},
-                new[] {"Furugawa Nagisa", "Kyoto Animation", "C02"},
-                new[] {"Kirigaya Katsuto", "A1 Pictures", "C03"}
+                new object[] {"Name", "Company", "Id"},
+                new object[] {"Edogawa Conan", "Tokyo", 1.1},
+                new object[] {"Furugawa Nagisa", "Kyoto Animation", 1.1},
+                new object[] {"Kirigaya Katsuto", "A1 Pictures", 1.1}
             };
 
-            IEnumerable<string> table = FormatTable(data, rules, CultureInfo.InvariantCulture);
+            IEnumerable<string> table = FormatTable(data, rules, new CultureInfo("af-ZA"));
 
             Assert.Equal(
                 new[]
                 {
                     "Name                Company                Id",
-                    "Edogawa Conan       Tokyo                 C01",
-                    "Furugawa Nagisa     Kyoto Animation       C02",
-                    "Kirigaya Katsuto    A1 Pictures           C03"
+                    "Edogawa Conan       Tokyo                 1,1",
+                    "Furugawa Nagisa     Kyoto Animation       1,1",
+                    "Kirigaya Katsuto    A1 Pictures           1,1"
                 },
                 table);
         }

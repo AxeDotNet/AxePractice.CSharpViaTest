@@ -101,9 +101,48 @@ namespace CSharpViaTest.Collections._40_CommonManipulation
 
         class PokerComparer : IComparer<Card>
         {
+            static readonly Dictionary<CardRank, int> rankScores = new Dictionary<CardRank, int>
+            {
+                { CardRank.Rank4, 1 },
+                { CardRank.Rank5, 2 },
+                { CardRank.Rank6, 3 },
+                { CardRank.Rank7, 4 },
+                { CardRank.Rank8, 5 },
+                { CardRank.Rank9, 6 },
+                { CardRank.Rank10, 7 },
+                { CardRank.RankJ, 8 },
+                { CardRank.RankQ, 9 },
+                { CardRank.RankK, 10 },
+                { CardRank.RankA, 11 },
+                { CardRank.Rank2, 12 },
+                { CardRank.Rank3, 13 },
+                { CardRank.Joker, 14 }
+            };
+
+            static readonly Dictionary<CardSuit, int> suitScores = new Dictionary<CardSuit, int>
+            {
+                { CardSuit.Clubs, 1 },
+                { CardSuit.Spades, 2 },
+                { CardSuit.Diamonds, 3 },
+                { CardSuit.Hearts, 4 },
+                { CardSuit.None, 5 }
+            };
+
             public int Compare(Card x, Card y)
             {
-                throw new System.NotImplementedException();
+                if (x == null) { throw new ArgumentNullException(nameof(x)); }
+                if (y == null) { throw new ArgumentNullException(nameof(y)); }
+
+                int rankScoreX = rankScores[x.Rank];
+                int rankScoreY = rankScores[y.Rank];
+                if (rankScoreX > rankScoreY) { return 1; }
+                if (rankScoreX < rankScoreY) { return -1; }
+
+                int suitScoreX = suitScores[x.Suit];
+                int suitScoreY = suitScores[y.Suit];
+                if (suitScoreX > suitScoreY) { return 1; }
+                if (suitScoreX < suitScoreY) { return -1; }
+                return 0;
             }
         }
 

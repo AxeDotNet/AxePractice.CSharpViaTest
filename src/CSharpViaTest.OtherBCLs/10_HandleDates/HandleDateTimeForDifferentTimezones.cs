@@ -36,7 +36,13 @@ namespace CSharpViaTest.OtherBCLs._10_HandleDates
         static IEnumerable<(string, TimeSpan, bool, string)> CreateTimezoneTable(
             DateTime universalTime, IEnumerable<TimeZoneInfo> timezones)
         {
-            throw new NotImplementedException();
+            foreach (TimeZoneInfo timezone in timezones)
+            {
+                yield return (timezone.Id, timezone.GetUtcOffset(universalTime),
+                    timezone.IsDaylightSavingTime(universalTime), TimeZoneInfo
+                        .ConvertTime(universalTime, TimeZoneInfo.Utc, timezone)
+                        .ToString("yyyy/MM/dd hh:mm:ss"));
+            }
         }
 
         #endregion

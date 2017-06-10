@@ -36,7 +36,20 @@ namespace CSharpViaTest.Collections._20_YieldPractices
 
         public static IEnumerable<TSource> MyDistinct<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
         {
-            throw new NotImplementedException();
+            if (source == null) { throw new ArgumentNullException(nameof(source)); }
+            return MyDistinctIterator(source, comparer);
+        }
+
+        static IEnumerable<TSource> MyDistinctIterator<TSource>(IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
+        {
+            var duplicates = new HashSet<TSource>(comparer ?? EqualityComparer<TSource>.Default);
+            foreach (TSource item in source)
+            {
+                if (duplicates.Add(item))
+                {
+                    yield return item;
+                }
+            }
         }
 
         #endregion

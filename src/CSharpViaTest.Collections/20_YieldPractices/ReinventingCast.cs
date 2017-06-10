@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using CSharpViaTest.Collections.Helpers;
 using Xunit;
 
 namespace CSharpViaTest.Collections._20_YieldPractices
@@ -11,8 +12,8 @@ namespace CSharpViaTest.Collections._20_YieldPractices
      * Description
      * ===========
      * 
-     * Please reinvent Cast<T> extension method. Casts the elements of an IEnumerable to
-     * the specified type.
+     * Please reinvent MyCast<T> extension method. Casts the elements of an IEnumerable to
+     * the specified type. The test are introduced from dotnet core framework.
      * 
      * Difficulty: Super Easy
      * 
@@ -38,38 +39,39 @@ namespace CSharpViaTest.Collections._20_YieldPractices
     public class ReinventingCast
     {
         [Fact]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         [SuppressMessage("ReSharper", "UnusedVariable")]
-        public void cast_int_to_long_throws()
+        public void CastIntToLongThrows()
         {
-            var q = from x in new[] { 9999, 0, 888, -1, 66, -777, 1, 2, -12345 }
+            IEnumerable<int> q = from x in new[] { 9999, 0, 888, -1, 66, -777, 1, 2, -12345 }
                 where x > int.MinValue
                 select x;
 
-            var rst = q.MyCast<long>();
+            IEnumerable<long> rst = q.MyCast<long>();
 
             Assert.Throws<InvalidCastException>(() => { foreach (long t in rst) { } });
         }
 
         [Fact]
         [SuppressMessage("ReSharper", "UnusedVariable")]
-        public void cast_byte_to_ushort_throws()
+        public void CastByteToUShortThrows()
         {
-            var q = from x in new byte[] { 0, 255, 127, 128, 1, 33, 99 }
+            IEnumerable<byte> q = from x in new byte[] { 0, 255, 127, 128, 1, 33, 99 }
                 select x;
 
-            var rst = q.MyCast<ushort>();
+            IEnumerable<ushort> rst = q.MyCast<ushort>();
             Assert.Throws<InvalidCastException>(() => { foreach (ushort t in rst) { } });
         }
 
         [Fact]
-        public void should_get_empty_result()
+        public void EmptySource()
         {
             object[] source = { };
             Assert.Empty(source.MyCast<int>());
         }
 
         [Fact]
-        public void nullable_int_from_appropriate_objects()
+        public void NullableIntFromAppropriateObjects()
         {
             int? i = 10;
             object[] source = { -4, 1, 2, 3, 9, i };
@@ -77,9 +79,19 @@ namespace CSharpViaTest.Collections._20_YieldPractices
 
             Assert.Equal(expected, source.MyCast<int?>());
         }
-        
+
         [Fact]
-        public void long_from_nullable_int_in_objects_throws()
+        public void NullableIntFromAppropriateObjectsRunOnce()
+        {
+            int? i = 10;
+            object[] source = { -4, 1, 2, 3, 9, i };
+            int?[] expected = { -4, 1, 2, 3, 9, i };
+
+            Assert.Equal(expected, source.RunOnce().MyCast<int?>());
+        }
+
+        [Fact]
+        public void LongFromNullableIntInObjectsThrows()
         {
             int? i = 10;
             object[] source = { -4, 1, 2, 3, 9, i };
@@ -89,7 +101,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void long_from_nullable_int_in_objects_including_null_throws()
+        public void LongFromNullableIntInObjectsIncludingNullThrows()
         {
             int? i = 10;
             object[] source = { -4, 1, 2, 3, 9, null, i };
@@ -99,7 +111,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void nullable_int_from_appropriate_objects_including_null()
+        public void NullableIntFromAppropriateObjectsIncludingNull()
         {
             int? i = 10;
             object[] source = { -4, 1, 2, 3, 9, null, i };
@@ -110,7 +122,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
 
         [Fact]
         [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
-        public void throw_on_uncastable_item()
+        public void ThrowOnUncastableItem()
         {
             object[] source = { -4, 1, 2, 3, 9, "45" };
             int[] expectedBeginning = { -4, 1, 2, 3, 9 };
@@ -122,7 +134,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void throw_casting_int_to_double()
+        public void ThrowCastingIntToDouble()
         {
             int[] source = { -4, 1, 2, 9 };
 
@@ -130,7 +142,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
             Assert.Throws<InvalidCastException>(() => MyCast.ToList());
         }
 
-        static void TestCastThrow<T>(object o)
+        private static void TestCastThrow<T>(object o)
         {
             byte? i = 10;
             object[] source = { -1, 0, o, i };
@@ -141,29 +153,38 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void throw_on_heterogenous_source()
+        public void ThrowOnHeterogenousSource()
         {
             TestCastThrow<long?>(null);
             TestCastThrow<long>(9L);
         }
 
         [Fact]
-        public void cast_to_string()
+        public void CastToString()
         {
             object[] source = { "Test1", "4.5", null, "Test2" };
             string[] expected = { "Test1", "4.5", null, "Test2" };
 
             Assert.Equal(expected, source.MyCast<string>());
         }
-        
+
         [Fact]
-        public void array_conversion_throws()
+        public void CastToStringRunOnce()
+        {
+            object[] source = { "Test1", "4.5", null, "Test2" };
+            string[] expected = { "Test1", "4.5", null, "Test2" };
+
+            Assert.Equal(expected, source.RunOnce().MyCast<string>());
+        }
+
+        [Fact]
+        public void ArrayConversionThrows()
         {
             Assert.Throws<InvalidCastException>(() => new[] { -4 }.MyCast<long>().ToList());
         }
 
         [Fact]
-        public void first_element_invalid_for_cast()
+        public void FirstElementInvalidForCast()
         {
             object[] source = { "Test", 3, 5, 10 };
 
@@ -172,7 +193,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void last_element_invalid_for_cast()
+        public void LastElementInvalidForCast()
         {
             object[] source = { -5, 9, 0, 5, 9, "Test" };
 
@@ -181,7 +202,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void nullable_int_from_nulls_and_ints()
+        public void NullableIntFromNullsAndInts()
         {
             object[] source = { 3, null, 5, -4, 0, null, 9 };
             int?[] expected = { 3, null, 5, -4, 0, null, 9 };
@@ -190,7 +211,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void throw_casting_int_to_long()
+        public void ThrowCastingIntToLong()
         {
             int[] source = { -4, 1, 2, 3, 9 };
 
@@ -199,7 +220,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void throw_casting_int_to_nullable_long()
+        public void ThrowCastingIntToNullableLong()
         {
             int[] source = { -4, 1, 2, 3, 9 };
 
@@ -208,7 +229,7 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void throw_casting_nullable_int_to_long()
+        public void ThrowCastingNullableIntToLong()
         {
             int?[] source = { -4, 1, 2, 3, 9 };
 
@@ -217,26 +238,36 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
-        public void throw_casting_nullable_int_to_nullable_long()
+        public void ThrowCastingNullableIntToNullableLong()
         {
-            int?[] source = new int?[] { -4, 1, 2, 3, 9, null };
+            int?[] source = { -4, 1, 2, 3, 9, null };
 
             IEnumerable<long?> MyCast = source.MyCast<long?>();
             Assert.Throws<InvalidCastException>(() => MyCast.ToList());
         }
 
         [Fact]
-        public void casting_null_to_nonnullable_is_null_reference_exception()
+        public void CastingNullToNonnullableIsNullReferenceException()
         {
-            int?[] source = new int?[] { -4, 1, null, 3 };
+            int?[] source = { -4, 1, null, 3 };
             IEnumerable<int> MyCast = source.MyCast<int>();
             Assert.Throws<NullReferenceException>(() => MyCast.ToList());
         }
 
         [Fact]
-        public void null_source()
+        public void NullSource()
         {
             Assert.Throws<ArgumentNullException>(() => ((IEnumerable<object>)null).MyCast<string>());
+        }
+
+        [Fact]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        public void ForcedToEnumeratorDoesntEnumerate()
+        {
+            IEnumerable<string> iterator = new object[0].Where(i => i != null).MyCast<string>();
+            // Don't insist on this behaviour, but check it's correct if it happens
+            var en = iterator as IEnumerator<string>;
+            Assert.False(en != null && en.MoveNext());
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using CSharpViaTest.Collections.Helpers;
 using Xunit;
 
 namespace CSharpViaTest.Collections._20_YieldPractices
@@ -10,10 +11,10 @@ namespace CSharpViaTest.Collections._20_YieldPractices
      * Description
      * ===========
      * 
-     * Please reinvent Distict<T> extension method. Please note that in this practice, 
+     * Please reinvent MyDistict<T> extension method. Please note that in this practice, 
      * you have to pay attention to memory usage efficiency. For example. You have a 
      * huge collection with 1MB of data, but what we only need is just some of the
-     * distinct result.
+     * MyDistinct result. The test are introduced from dotnet core framework.
      * 
      * Difficulty: Medium
      * 
@@ -74,6 +75,13 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
+        public void EmptySourceRunOnce()
+        {
+            int[] source = { };
+            Assert.Empty(source.RunOnce().MyDistinct());
+        }
+
+        [Fact]
         public void SingleNullElementExplicitlyUseDefaultComparer()
         {
             string[] source = { null };
@@ -127,6 +135,15 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         }
 
         [Fact]
+        public void SomeDuplicatesIncludingNullsRunOnce()
+        {
+            int?[] source = { 1, 1, 1, 2, 2, 2, null, null };
+            int?[] expected = { 1, 2, null };
+
+            Assert.Equal(expected, source.RunOnce().MyDistinct());
+        }
+
+        [Fact]
         public void LastSameAsFirst()
         {
             int[] source = { 1, 2, 3, 4, 5, 1 };
@@ -144,7 +161,16 @@ namespace CSharpViaTest.Collections._20_YieldPractices
 
             Assert.Equal(expected, source.MyDistinct());
         }
-        
+
+        [Fact]
+        public void RepeatsNonConsecutiveRunOnce()
+        {
+            int[] source = { 1, 1, 2, 2, 4, 3, 1, 3, 2 };
+            int[] expected = { 1, 2, 4, 3 };
+
+            Assert.Equal(expected, source.RunOnce().MyDistinct());
+        }
+
         [Fact]
         public void NullComparer()
         {
@@ -178,21 +204,30 @@ namespace CSharpViaTest.Collections._20_YieldPractices
 
             Assert.Equal(expected, source.MyDistinct(new AnagramEqualityComparer()), new AnagramEqualityComparer());
         }
-        
+
+        [Fact]
+        public void CustomEqualityComparerRunOnce()
+        {
+            string[] source = { "Bob", "Tim", "bBo", "miT", "Robert", "iTm" };
+            string[] expected = { "Bob", "Tim", "Robert" };
+
+            Assert.Equal(expected, source.RunOnce().MyDistinct(new AnagramEqualityComparer()), new AnagramEqualityComparer());
+        }
+
         [Theory, MemberData(nameof(SequencesWithDuplicates))]
         [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public void FindDistinctAndValidate<T>(T unusedArgumentToForceTypeInference, IEnumerable<T> original)
         {
             // Convert to list to avoid repeated enumerations of the enumerables.
-            var originalList = original.ToList();
-            var distinctList = originalList.MyDistinct().ToList();
+            List<T> originalList = original.ToList();
+            List<T> distinctList = originalList.MyDistinct().ToList();
 
             // Ensure the result doesn't contain duplicates.
-            var hashSet = new HashSet<T>();
-            foreach (var i in distinctList)
+            HashSet<T> hashSet = new HashSet<T>();
+            foreach (T i in distinctList)
                 Assert.True(hashSet.Add(i));
 
-            var originalSet = new HashSet<T>(original);
+            HashSet<T> originalSet = new HashSet<T>(original);
             Assert.Superset(originalSet, hashSet);
             Assert.Subset(originalSet, hashSet);
         }
@@ -258,41 +293,9 @@ namespace CSharpViaTest.Collections._20_YieldPractices
         {
             int?[] source = { 1, 1, 1, 2, 2, 2, null, null };
 
-            var result = source.MyDistinct();
+            IEnumerable<int?> result = source.MyDistinct();
 
             Assert.Equal(result, result);
-        }
-
-        class AnagramEqualityComparer : IEqualityComparer<string>
-        {
-            public bool Equals(string x, string y)
-            {
-                if (ReferenceEquals(x, y)) return true;
-                if (x == null | y == null) return false;
-                int length = x.Length;
-                if (length != y.Length) return false;
-                using (IEnumerator<char> en = x.OrderBy(i => i).GetEnumerator())
-                {
-                    foreach (char c in y.OrderBy(i => i))
-                    {
-                        en.MoveNext();
-                        if (c != en.Current) return false;
-                    }
-                }
-                return true;
-            }
-
-            public int GetHashCode(string obj)
-            {
-                if (obj == null) return 0;
-                int hash = obj.Length;
-                foreach (char c in obj)
-                {
-                    hash ^= c;
-                }
-
-                return hash;
-            }
         }
     }
 }

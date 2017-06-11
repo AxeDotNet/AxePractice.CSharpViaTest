@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace CSharpViaTest.OtherBCLs._10_HandleDates
+namespace CSharpViaTest.OtherBCLs.HandleDates
 {
     /* 
      * Description

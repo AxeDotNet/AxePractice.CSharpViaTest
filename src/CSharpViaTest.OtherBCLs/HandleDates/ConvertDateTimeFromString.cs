@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace CSharpViaTest.OtherBCLs._10_HandleDates
+namespace CSharpViaTest.OtherBCLs.HandleDates
 {
     /* 
      * Description

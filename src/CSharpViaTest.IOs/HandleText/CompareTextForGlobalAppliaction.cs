@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Xunit;
 
-namespace CSharpViaTest.IOs._10_HandleText
+namespace CSharpViaTest.IOs.HandleText
 {
     /* 
      * Description

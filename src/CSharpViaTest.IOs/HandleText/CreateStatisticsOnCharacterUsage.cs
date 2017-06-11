@@ -7,7 +7,7 @@ using CSharpViaTest.IOs.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CSharpViaTest.IOs._10_HandleText
+namespace CSharpViaTest.IOs.HandleText
 {
     /* 
      * Description

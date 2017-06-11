@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpViaTest.IOs", "src\CS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpViaTest.OtherBCLs", "src\CSharpViaTest.OtherBCLs\CSharpViaTest.OtherBCLs.csproj", "{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet-frameworks", "dotnet-frameworks", "{01D3E1B1-9A25-475F-A0D5-9767970A1817}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87D91B38-D5C2-4D91-93C0-BB8FF7EED8D4} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
+		{07F93486-B4B0-4094-88CE-D045C4BB75C2} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
+		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
 	EndGlobalSection
 EndGlobal

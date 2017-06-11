@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using Xunit;
 
-namespace CSharpViaTest.IOs._10_HandleText
+namespace CSharpViaTest.IOs.HandleText
 {
     /* 
      * Description

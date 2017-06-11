@@ -20,6 +20,8 @@ namespace CSharpViaTest.OtherBCLs.HandleUris
      */
     public class GetQueryParameters
     {
+        #region Please modifies the code to pass the test
+
         class QueryString
         {
             public QueryString(string httpUri)
@@ -32,6 +34,8 @@ namespace CSharpViaTest.OtherBCLs.HandleUris
                 get { throw new NotImplementedException(); }
             }
         }
+
+        #endregion
 
         [Fact]
         public void should_get_query_strings()

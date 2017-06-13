@@ -17,6 +17,7 @@ namespace CSharpViaTest.OtherBCLs.HandleUris
      * ===============
      * 
      * - The usage of Uri class.
+     * - The usage of HttpUtility class.
      */
     public class GetQueryParameters
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
+using Xunit.Sdk;
 
 namespace CSharpViaTest.IOs.HandleText
 {
@@ -50,6 +51,12 @@ namespace CSharpViaTest.IOs.HandleText
         public void should_calculate_text_character_length(string testString, int expectedLength)
         {
             Assert.Equal(expectedLength, GetCharacterLength(testString));
+        }
+
+        [Fact]
+        public void should_throw_if_input_is_null()
+        {
+            Assert.Throws<ArgumentNullException>(() => GetCharacterLength(null));
         }
     }
 }

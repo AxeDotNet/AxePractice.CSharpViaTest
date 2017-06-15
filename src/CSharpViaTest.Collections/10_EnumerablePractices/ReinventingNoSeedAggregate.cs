@@ -29,7 +29,7 @@ namespace CSharpViaTest.Collections._10_EnumerablePractices
      * - You can add helper method within region. But you cannot modify code outside the
      *   region.
      */
-    static class ReinventingLinq
+    static partial class ReinventingLinq
     {
         #region Please modifies the code to pass the test
 

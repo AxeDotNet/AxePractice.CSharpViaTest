@@ -103,6 +103,15 @@ namespace CSharpViaTest.Collections._10_EnumerablePractices
         }
 
         [Fact]
+        public void TwoElementsRefType()
+        {
+            int?[] source = {1, 2};
+            int expected = 3;
+
+            Assert.Equal(expected, source.MyAggregate((x, y) => x + y));
+        }
+
+        [Fact]
         public void MultipleElements()
         {
             int[] source = { 5, 6, 0, -4 };

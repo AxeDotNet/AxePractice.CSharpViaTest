@@ -4,6 +4,24 @@ using Xunit;
 
 namespace CSharpViaTest.OtherBCLs.HandleBinary
 {
+    /* 
+     * Description
+     * ===========
+     * 
+     * This test will try convert the first 4 bytes in a sequence of bytes to a 32-bit
+     * integer:
+     * 
+     * Please note that the second parameter indicates if the bytes are stored in a
+     * little endian manner or a big endian manner.
+     * 
+     * Difficulty: Super Easy
+     * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - BitConverter
+     * - Little endian/big endian storage.
+     */
     public class ShouldConvertByteArrayAsInteger
     {
         #region Please modifies the code to pass the test

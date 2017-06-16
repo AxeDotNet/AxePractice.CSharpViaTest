@@ -57,6 +57,7 @@ namespace CSharpViaTest.Collections._10_EnumerablePractices
 
         public static IEnumerable<TSource> MyDistinct<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
         {
+            if (source == null) throw new ArgumentNullException(nameof(source));
             return new DistinctEnumerable<TSource>(source, comparer);
         }
 

@@ -11,13 +11,13 @@ namespace CSharpViaTest.OtherBCLs.HandleUris
      * 
      * This test will parse the query string of the uri. 
      * 
-     * Difficulty: Super Easy
+     * Difficulty: Medium
      * 
      * Knowledge Point
      * ===============
      * 
      * - The usage of Uri class.
-     * - The usage of HttpUtility class.
+     * - The usage of HttpUtility class (.NET Framework) or WebUtility (.NET Core).
      */
     public class GetQueryParameters
     {
@@ -47,6 +47,15 @@ namespace CSharpViaTest.OtherBCLs.HandleUris
 
             Assert.Equal("value1", queryString["key1"].Single());
             Assert.Equal("value2", queryString["key2"].Single());
+        }
+
+        [Theory]
+        [InlineData("http://www.base.com/path?%e7%9b%b8%e5%85%b3=%e5%bd%93%e7%84%b6%e4%ba%86", "\u76f8\u5173", "\u5f53\u7136\u4e86")]
+        public void should_handle_escaping_characters(string uri, string key, string value)
+        {
+            var queryString = new QueryString(uri);
+
+            Assert.Equal(value, queryString[key].Single());
         }
 
         [Fact]

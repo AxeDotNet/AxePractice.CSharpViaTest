@@ -5,21 +5,37 @@ using Xunit;
 
 namespace CSharpViaTest.OtherBCLs.HandleReflections
 {
+    /* 
+     * Description
+     * ===========
+     * 
+     * This test will try get metadata information on MemberInfo. The Attribute class
+     * can be used on different senarios, which is specified by `AttributeUsage`.
+     * Since it is metadata, it could be annotated only on definition level, not runtime.
+     * To get that metadata, you should first get correspond reflection strcuture.
+     * e.g. Type, MemberInfo.
+     * 
+     * This test will create an attribute only applied to fields of Enum. You should
+     * write an extension method to get description attached on metadata.
+     * 
+     * Difficulty: Medium
+     * 
+     * Knowledge Point
+     * ===============
+     * 
+     * - Enum type.
+     * - GetType(), GetMember().
+     */
     static class EnumDescriptionExtension
     {
+        #region Please modifies the code to pass the test
+
         public static string GetDescription<T>(this T value)
         {
-            if (!(value is Enum))
-            {
-                throw new NotSupportedException();
-            }
-
-            MyEnumDescriptionAttribute attribute = value.GetType()
-                .GetMember(value.ToString())
-                .Single()
-                .GetCustomAttribute<MyEnumDescriptionAttribute>();
-            return attribute == null ? value.ToString() : attribute.Description;
+            throw new NotImplementedException();
         }
+
+        #endregion
     }
 
     [AttributeUsage(AttributeTargets.Field)]

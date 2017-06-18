@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet-frameworks", "dotnet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wheels", "wheels", "{D7929FBE-C92E-4239-A380-9EA873737C6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpViaTest.Wheels.Manualfac", "src\CSharpViaTest.Wheels.Manualfac\CSharpViaTest.Wheels.Manualfac.csproj", "{0FBEF8E8-CC35-4339-BD3E-14D3A1B9D870}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FBEF8E8-CC35-4339-BD3E-14D3A1B9D870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBEF8E8-CC35-4339-BD3E-14D3A1B9D870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBEF8E8-CC35-4339-BD3E-14D3A1B9D870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBEF8E8-CC35-4339-BD3E-14D3A1B9D870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 		{87D91B38-D5C2-4D91-93C0-BB8FF7EED8D4} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
 		{07F93486-B4B0-4094-88CE-D045C4BB75C2} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
+		{0FBEF8E8-CC35-4339-BD3E-14D3A1B9D870} = {D7929FBE-C92E-4239-A380-9EA873737C6A}
 	EndGlobalSection
 EndGlobal

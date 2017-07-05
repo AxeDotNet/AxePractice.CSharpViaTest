@@ -51,6 +51,12 @@ namespace CSharpViaTest.OtherBCLs.HandleReflections
         #endregion
 
         [Fact]
+        public void should_throws_if_type_is_null()
+        {
+            Assert.Throws<ArgumentNullException>("type", () => InvokeConstructor(null));
+        }
+
+        [Fact]
         public void should_invoke_public_default_ctor()
         {
             ReflectionSample instance = InvokeConstructor(typeof(ReflectionSample).FullName);

@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpViaTest.Collections", "src\CSharpViaTest.Collections\CSharpViaTest.Collections.csproj", "{87D91B38-D5C2-4D91-93C0-BB8FF7EED8D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpViaTest.Collections", "src\CSharpViaTest.Collections\CSharpViaTest.Collections.csproj", "{87D91B38-D5C2-4D91-93C0-BB8FF7EED8D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpViaTest.IOs", "src\CSharpViaTest.IOs\CSharpViaTest.IOs.csproj", "{07F93486-B4B0-4094-88CE-D045C4BB75C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpViaTest.IOs", "src\CSharpViaTest.IOs\CSharpViaTest.IOs.csproj", "{07F93486-B4B0-4094-88CE-D045C4BB75C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpViaTest.OtherBCLs", "src\CSharpViaTest.OtherBCLs\CSharpViaTest.OtherBCLs.csproj", "{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpViaTest.OtherBCLs", "src\CSharpViaTest.OtherBCLs\CSharpViaTest.OtherBCLs.csproj", "{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet-frameworks", "dotnet-frameworks", "{01D3E1B1-9A25-475F-A0D5-9767970A1817}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "language", "language", "{AD866527-CEE9-4686-9036-E0043CD550BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpViaTest.Langauge", "src\CSharpViaTest.Langauge\CSharpViaTest.Langauge.csproj", "{E37D224F-EF67-444B-8521-10CD6536E30D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +33,10 @@ Global
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E37D224F-EF67-444B-8521-10CD6536E30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E37D224F-EF67-444B-8521-10CD6536E30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E37D224F-EF67-444B-8521-10CD6536E30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E37D224F-EF67-444B-8521-10CD6536E30D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +45,6 @@ Global
 		{87D91B38-D5C2-4D91-93C0-BB8FF7EED8D4} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
 		{07F93486-B4B0-4094-88CE-D045C4BB75C2} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
 		{3BCF0B26-C66E-493D-BD5E-13F59E752CE5} = {01D3E1B1-9A25-475F-A0D5-9767970A1817}
+		{E37D224F-EF67-444B-8521-10CD6536E30D} = {AD866527-CEE9-4686-9036-E0043CD550BD}
 	EndGlobalSection
 EndGlobal
